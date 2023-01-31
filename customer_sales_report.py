@@ -21,6 +21,8 @@ for detail in csvreader:
     total = float(detail[3]) + float(detail[4]) + float(detail[5])
     cust_total += total
 
+outfile.write(("261") + "\t\t\t\t" + str("%.2f" % cust_total) + "\n")
+
 
 infile.close()
 outfile.close()

@@ -11,6 +11,5 @@ for detail in csvreader:
         format(detail[3]),
         format(detail[4]),
     )
-infile.close()
 
-# fix formatting
+infile.close()
