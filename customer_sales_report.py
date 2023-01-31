@@ -4,12 +4,23 @@ infile = open("sales.csv", "r")
 outfile = open("salesreport.csv", "w")
 
 csvreader = csv.reader(infile, delimiter=",")
+next(csvreader)
 
-outfile.write("Customer | Total \n")
+outfile.write("Customer ID | Total \n")
+
+custID = "250"
+cust_total = 0
+
 for detail in csvreader:
-    custID = detail[0]
-    total = float(detail[3]) + float(detail[4]) + float(detail[5])
-    new_record = "custID" + " " + "total" 
+    if custID != detail[0]:
+        print(cust_total)
+        outfile.write((str(custID)) + "\t\t\t\t" + str("%.2f" % cust_total) + "\n")
+        custID = detail[0]
+        cust_total = 0
 
-infile.close() 
+    total = float(detail[3]) + float(detail[4]) + float(detail[5])
+    cust_total += total
+
+
+infile.close()
 outfile.close()
